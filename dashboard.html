@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(10px);
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            color: #fff;
+        }
+
+        /* Profile Image */
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            object-fit: cover;
+        }
+
+        /* Dashboard Cards */
+        .stat-card {
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        /* Button */
+        .btn-custom {
+            background: #fff;
+            color: #764ba2;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            background: #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔹 Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">MyDashboard</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔹 Main Section -->
+<div class="container py-5">
+    <div class="row g-4">
+
+        <!-- 🔹 Profile Section -->
+        <div class="col-lg-4 col-md-12">
+            <div class="glass p-4 text-center">
+                <img src="https://via.placeholder.com/150" class="profile-img mb-3">
+                <h4>Nidhi Tank</h4>
+                <p class="text-light">nidhi@email.com</p>
+                <button class="btn btn-custom btn-sm mt-2">Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- 🔹 Dashboard Content -->
+        <div class="col-lg-8 col-md-12">
+            <div class="row g-4">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="glass p-4 text-center stat-card">
+                        <div class="stat-icon">📁</div>
+                        <h5>Projects</h5>
+                        <h2>08</h2>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="glass p-4 text-center stat-card">
+                        <div class="stat-icon">✅</div>
+                        <h5>Tasks</h5>
+                        <h2>24</h2>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="glass p-4 text-center stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <h5>Pending</h5>
+                        <h2>03</h2>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="glass p-4">
+                        <h5>Welcome</h5>
+                        <p>
+                            This is a fully responsive and modern dashboard designed using
+                            Bootstrap 5 with glassmorphism UI. The layout automatically
+                            adjusts for mobile, tablet, and desktop screens.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

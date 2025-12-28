@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Dashboard</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen">
+
+<div class="flex flex-col md:flex-row">
+
+  <!-- Sidebar -->
+  <aside class="w-full md:w-64 bg-gray-800 p-6 space-y-6">
+    <h1 class="text-2xl font-bold text-teal-400">Dashboard</h1>
+    <nav class="space-y-4">
+      <a href="index.html" class="block p-2 rounded bg-teal-500">Home</a>
+      <a href="profile.html" class="block p-2 hover:bg-gray-700 rounded">Profile</a>
+      <a href="exercise.html" class="block p-2 hover:bg-gray-700 rounded">Exercise</a>
+      <a href="history.html" class="block p-2 hover:bg-gray-700 rounded">History</a>
+      <a href="setting.html" class="block p-2 hover:bg-gray-700 rounded">Settings</a>
+      <a href="#" class="block p-2 hover:bg-red-600 rounded">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6 space-y-6">
+
+    <!-- Top Navbar -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <input
+        type="text"
+        placeholder="Search..."
+        class="w-full md:w-1/3 px-4 py-2 rounded bg-gray-700 outline-none"
+      />
+      <div class="flex items-center gap-4">
+        <img src="#" class="rounded-full"/>
+        <span class="font-semibold">User</span>
+      </div>
+    </div>
+
+    <!-- Stats Cards with Icons -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="bg-gray-800 p-4 rounded text-center hover:scale-105 transition">
+        <img src="https://img.icons8.com/color/48/fire-element.png" class="mx-auto mb-2"/>
+        <p class="text-gray-400">Calories Burned</p>
+        <h2 class="text-2xl font-bold">305</h2>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded text-center hover:scale-105 transition">
+        <img src="https://img.icons8.com/color/48/walking.png" class="mx-auto mb-2"/>
+        <p class="text-gray-400">Steps</p>
+        <h2 class="text-2xl font-bold">10,983</h2>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded text-center hover:scale-105 transition">
+        <img src="https://img.icons8.com/color/48/road.png" class="mx-auto mb-2"/>
+        <p class="text-gray-400">Distance</p>
+        <h2 class="text-2xl font-bold">7 km</h2>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded text-center hover:scale-105 transition">
+        <img src="https://img.icons8.com/color/48/sleep.png" class="mx-auto mb-2"/>
+        <p class="text-gray-400">Sleep</p>
+        <h2 class="text-2xl font-bold">7h 48m</h2>
+      </div>
+
+    </div>
+
+    <!-- Steps Chart -->
+    <div class="bg-gray-800 p-6 rounded">
+      <h3 class="text-lg font-semibold mb-4">Steps Overview</h3>
+      <canvas id="stepsChart" height="120"></canvas>
+    </div>
+
+    <!-- Bottom Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+      <div class="bg-gray-800 p-4 rounded">
+        <h3 class="font-semibold mb-2">Activity Level</h3>
+        <canvas id="activityChart"></canvas>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded">
+        <h3 class="font-semibold mb-2">Nutrition</h3>
+        <canvas id="nutritionChart"></canvas>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded">
+        <h3 class="font-semibold mb-2">Hydration</h3>
+        <canvas id="hydrationChart"></canvas>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- Charts Script -->
+<script>
+  // Steps Line Chart
+  new Chart(document.getElementById('stepsChart'), {
+    type: 'line',
+    data: {
+      labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      datasets: [{
+        label: 'Steps',
+        data: [5000,7000,6000,9000,8500,10000,11000],
+        borderColor: '#14b8a6',
+        backgroundColor: 'rgba(20,184,166,0.2)',
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      plugins: { legend: { labels: { color: 'white' } } },
+      scales: {
+        x: { ticks: { color: 'white' } },
+        y: { ticks: { color: 'white' } }
+      }
+    }
+  });
+
+  // Activity Bar Chart
+  new Chart(document.getElementById('activityChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Low','Medium','High'],
+      datasets: [{
+        data: [20,50,30],
+        backgroundColor: ['#ef4444','#facc15','#22c55e']
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // Nutrition Doughnut
+  new Chart(document.getElementById('nutritionChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Protein','Carbs','Fat'],
+      datasets: [{
+        data: [40,35,25],
+        backgroundColor: ['#22c55e','#3b82f6','#f97316']
+      }]
+    }
+  });
+
+  // Hydration Doughnut
+  new Chart(document.getElementById('hydrationChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Water Drunk','Remaining'],
+      datasets: [{
+        data: [75,25],
+        backgroundColor: ['#0ea5e9','#374151']
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
